@@ -1,0 +1,62 @@
+.collection{background:var(--bg2)}
+.collection__head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(40px,6vw,80px)}
+.collection__head p{color:var(--mute);max-width:34ch}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,28px)}
+
+/* card: pic poore card mein, text neeche */
+.card{
+  position:relative;
+  overflow:hidden;
+  height:420px;               /* card ki height yahan se badlo */
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  color:#fff;
+  background:#1b130e;
+  border:1px solid var(--line);
+  transition:border-color .5s,box-shadow .6s;
+  will-change:transform;
+}
+.card:hover{border-color:var(--tone);box-shadow:0 30px 70px -20px var(--tone)}
+
+/* pic: poori width aur height */
+.card__art{
+  position:absolute;
+  inset:0;
+  padding:0;
+  pointer-events:none;        /* ye click ko button tak jane deta hai */
+  transition:transform .9s cubic-bezier(.22,1,.36,1);
+}
+.card__art .pic{object-fit:cover;filter:none}   /* cover = pic poora card bhar degi */
+.card:hover .card__art{transform:scale(1.1)}
+
+/* neeche ka dark gradient (text saaf dikhane ke liye) */
+.card::before{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,color-mix(in srgb,var(--tone) 35%,#120d0a) 0%,transparent 65%);
+}
+/* hover par poora rang bhar jata hai */
+.card::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,var(--tone) 10%,transparent 80%);
+  opacity:0;transition:opacity .6s;
+}
+.card:hover::after{opacity:.9}
+
+.card.flash{animation:flash 1.8s}
+@keyframes flash{30%{box-shadow:0 0 0 3px var(--tone),0 0 60px var(--tone)}}
+
+/* text + button (pic ke upar) */
+.card__info{position:relative;z-index:2;padding:1.1rem}
+.card h3{font-size:1.5rem;margin:0}
+.card p{color:rgba(255,255,255,.8);font-size:.8rem;margin-bottom:.8rem}
+.card__row{display:flex;flex-direction:column;align-items:stretch;gap:.7rem;font-size:.9rem}
+.card__row .btn{width:100%;justify-content:center;border-color:#fff}
+.card__row .btn:hover:not(:disabled){background:#fff;color:var(--tone)}
+
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){
+  .grid{grid-template-columns:1fr}
+  .card{height:380px}
+}

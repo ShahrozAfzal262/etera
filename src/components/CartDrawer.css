@@ -1,0 +1,12 @@
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:70}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg2);z-index:80;display:flex;flex-direction:column;padding:28px;border-left:1px solid var(--line)}
+.drawer header,.drawer footer{display:flex;justify-content:space-between;align-items:center}
+.drawer h3{font-size:1.8rem}
+.drawer ul{flex:1;overflow:auto;margin:1.6rem 0}
+.drawer li{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--line)}
+.drawer small{display:block;color:var(--mute)}
+.qty{display:flex;gap:.8rem;align-items:center}
+.qty button{width:28px;height:28px;border:1px solid var(--line);border-radius:50%}
+.empty{flex:1;color:var(--mute);margin-top:1.6rem}
+.drawer footer{flex-wrap:wrap;gap:1rem;border-top:1px solid var(--line);padding-top:1.2rem}
+.drawer footer .btn{width:100%;justify-content:center}

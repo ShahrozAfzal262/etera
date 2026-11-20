@@ -1,0 +1,69 @@
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:minmax(260px,.85fr) 1.5fr 90px;align-items:center;gap:2rem;padding:120px var(--pad) 90px;overflow:hidden}
+.hero__glow{position:absolute;inset:0;pointer-events:none}
+.hero__copy{position:relative;z-index:2;max-width:420px}
+.hero h1{font-weight:700;font-size:clamp(2.6rem,5.4vw,4.8rem);line-height:1.05;margin-bottom:1.6rem}
+.hero p{color:var(--mute);margin-bottom:2.2rem;max-width:36ch;font-size:.95rem}
+
+/* stage: --d poore circle system ka size hai, yahan se bada chota karo */
+.hero__stage{
+  --d:min(46vw,80vh,720px);   /* pehle min(36vw,68vh,580px) tha */
+  position:relative;z-index:1;
+  display:grid;place-items:center;
+  height:auto;                /* pehle fixed height thi, jis se circle chhota rehta tha */
+}
+
+/* ring + ghoomta hua bar */
+.orbit{
+  position:absolute;inset:0;margin:auto;
+  width:var(--d);height:var(--d);
+  border-radius:50%;
+  border:1px solid rgba(201,164,106,.35);
+  pointer-events:none;
+}
+.orbit__spin{position:absolute;inset:0}
+.orbit__bar{
+  position:absolute;top:-3px;left:50%;
+  width:56px;height:6px;margin-left:-28px;
+  border-radius:3px;
+  background:var(--gold);
+  box-shadow:0 0 18px 2px rgba(201,164,106,.7);
+}
+.orbit__dot{
+  position:absolute;bottom:-5px;left:50%;
+  width:10px;height:10px;margin-left:-5px;
+  border-radius:50%;
+  background:var(--ink);
+  opacity:.8;
+}
+
+/* circle ke andar pic */
+.hero__tilt{position:relative;z-index:1}
+.hero__circle{
+  width:calc(var(--d) * .86);
+  height:calc(var(--d) * .86);
+  border-radius:50%;
+  overflow:hidden;
+  background:#1b130e;
+  border:1px solid rgba(201,164,106,.4);
+  box-shadow:0 40px 80px -20px rgba(0,0,0,.7),inset 0 0 60px rgba(0,0,0,.45);
+}
+.hero__zoom{width:100%;height:100%}
+.hero__circle .pic{object-fit:cover;filter:none}    /* cover = pic circle ko poora bhar deti hai */
+
+/* right rail */
+.hero__rail{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1.4rem;justify-self:end}
+.rail__label{writing-mode:vertical-rl;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase}
+.rail__label--dim{color:var(--mute)}
+.rail__num{width:46px;height:46px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:.8rem}
+
+/* bottom progress bars */
+.hero__bars{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.bar{width:clamp(46px,8vw,90px);height:18px;position:relative;display:grid;align-items:center}
+.bar::before{content:'';position:absolute;inset:8px 0;background:var(--line)}
+.bar i{position:absolute;inset:8px 0;background:var(--gold);transform-origin:left}
+
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:100px;gap:0;text-align:left}
+  .hero__stage{--d:min(82vw,360px);order:-1;height:auto;margin:10px 0 24px}
+  .hero__rail{display:none}
+}
